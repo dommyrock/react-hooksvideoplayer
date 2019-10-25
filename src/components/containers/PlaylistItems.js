@@ -1,10 +1,12 @@
 import React from "react";
 import PlaylistItem from "../PlaylistItem";
 import withLink from "../hoc/withLink";
-import StyledPlaylistitems from "../styles/StyledPlaylistitems";
+import StyledPlaylistitems from "../styles/StyledPlaylistItems";
 
+//We get "modified/altered" PlaylistItem component here
 const PlaylistItemWithLink = withLink(PlaylistItem);
 
+//loops items in [] and creates playlist item foreach item in []
 const Playlistitems = ({ videos, active }) => (
   <StyledPlaylistitems>
     {videos.map(video => (
