@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import Video from "../Video";
 import Playlist from "../containers/Playlist";
-import StyledWbnPlayer from "../styles/StyledWbnPlayer";
+import StyledPlayer from "../styles/StyledPlayer";
 
+//ChatApp ssection
+import Dashboard from "../ChatApp/Dashboard";
+import Store from "../../Store";
+
+//#region ThemeStyle
 const theme = {
   bgcolor: "#353535",
   bgcolorItem: "#414141",
@@ -23,7 +28,7 @@ const themeLight = {
   borderPlayed: "none",
   color: "#353535"
 };
-
+//#endregion
 const Player = props => {
   const videos = JSON.parse(document.querySelector('[name="videos"]').value);
 
@@ -102,7 +107,7 @@ const Player = props => {
   return (
     <ThemeProvider theme={state.nightMode ? theme : themeLight}>
       {state.videos !== null ? (
-        <StyledWbnPlayer>
+        <StyledPlayer>
           <Video
             active={state.activeVideo}
             autoplay={state.autoplay}
@@ -115,8 +120,11 @@ const Player = props => {
             nightModeCallback={nightModeCallback}
             nightMode={state.nightMode}
           />
-        </StyledWbnPlayer>
+        </StyledPlayer>
       ) : null}
+      <Store>
+        <Dashboard />
+      </Store>
     </ThemeProvider>
   );
 };
